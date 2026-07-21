@@ -1,4 +1,5 @@
 # CAPTCHA Generator
+## Demo: https://shreya-oeo.github.io/Captcha-Generator/
 
 **Lightweight.** Browser-based CAPTCHA generation using vanilla Canvas API. No dependencies, no build step, no bloat.
 
