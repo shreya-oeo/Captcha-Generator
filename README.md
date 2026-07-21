@@ -2,7 +2,7 @@
 
 **Lightweight.** Browser-based CAPTCHA generation using vanilla Canvas API. No dependencies, no build step, no bloat.
 
-> **Security warning:** This is a client-side CAPTCHA — it's easily bypassed. Do NOT use this for real security. This is for testing, prototypes, and learning only. A real CAPTCHA needs server-side validation and proper bot detection.
+> **Security warning:** This is a client-side CAPTCHA. it's easily bypassed. Do NOT use this for real security. This is for testing, prototypes, and learning only. A real CAPTCHA needs server-side validation and proper bot detection.
 
 ## Features
 
