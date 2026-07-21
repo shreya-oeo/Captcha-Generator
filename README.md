@@ -30,7 +30,9 @@ captcha generation/
 
 ## Browser usage
 
-Open `index.html` in any modern browser. That's it.
+Open `index.html` in any modern browser.
+
+**Live demo:** https://shreya-oeo.github.io/Captcha-Generator/
 
 ## Server-side usage
 
