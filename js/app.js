@@ -18,14 +18,16 @@ function clearMessage() {
   message.className = 'message';
 }
 
-function regenerate() {
+function regenerate(e) {
+  if (e) e.preventDefault();
   captcha.generate();
   clearMessage();
   input.value = '';
   input.focus();
 }
 
-function verify() {
+function verify(e) {
+  if (e) e.preventDefault();
   const val = input.value.trim();
   if (!val) {
     showMessage('enter the text first', 'error');
@@ -35,13 +37,9 @@ function verify() {
     showMessage('human confirmed. proceed.', 'success');
     setTimeout(clearMessage, 2500);
   } else {
-    showMessage('wrong. are you a bot?', 'error');
     regenerate();
+    showMessage('invalid captcha', 'error');
   }
-}
-
-function handleResize() {
-  captcha.render();
 }
 
 canvas.addEventListener('click', regenerate);
@@ -49,8 +47,16 @@ refreshBtn.addEventListener('click', regenerate);
 verifyBtn.addEventListener('click', verify);
 
 input.addEventListener('keydown', (e) => {
-  if (e.key === 'Enter') verify();
+  if (e.key === 'Enter') {
+    e.preventDefault();
+    verify();
+  }
 });
 
 captcha.generate();
-window.addEventListener('resize', handleResize);
+
+let resizeTimer;
+window.addEventListener('resize', () => {
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(() => captcha._render(), 150);
+});

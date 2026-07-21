@@ -11,34 +11,34 @@ export class Captcha {
 
   generate() {
     this.code = generateCode(this.length);
-    if (this.ctx) this.#render();
+    if (this.ctx) this._render();
     return this.code;
   }
 
-  #render() {
+  _render() {
     const dpr = window.devicePixelRatio || 1;
     const rect = this.canvas.getBoundingClientRect();
-    const w = rect.width;
+    const w = rect.width || 400;
     const h = 90;
 
     this.canvas.width = w * dpr;
     this.canvas.height = h * dpr;
     this.ctx.scale(dpr, dpr);
 
-    this.#drawBackground(w, h);
-    this.#drawGrid(w, h);
-    this.#drawCurves(w, h);
-    this.#drawDots(w, h);
-    this.#drawCharacters(w, h);
-    this.#drawOverlay(w, h);
+    this._drawBackground(w, h);
+    this._drawGrid(w, h);
+    this._drawCurves(w, h);
+    this._drawDots(w, h);
+    this._drawCharacters(w, h);
+    this._drawOverlay(w, h);
   }
 
-  #drawBackground(w, h) {
+  _drawBackground(w, h) {
     this.ctx.fillStyle = '#0d1117';
     this.ctx.fillRect(0, 0, w, h);
   }
 
-  #drawGrid(w, h) {
+  _drawGrid(w, h) {
     this.ctx.strokeStyle = 'rgba(48,54,61,0.25)';
     this.ctx.lineWidth = 0.5;
     for (let x = 0; x < w; x += 20) {
@@ -49,7 +49,7 @@ export class Captcha {
     }
   }
 
-  #drawCurves(w, h) {
+  _drawCurves(w, h) {
     this.ctx.strokeStyle = `hsla(${randomInt(0,360)},70%,50%,0.2)`;
     this.ctx.lineWidth = randomInt(1, 3);
     for (let i = 0; i < 3; i++) {
@@ -63,7 +63,7 @@ export class Captcha {
     }
   }
 
-  #drawDots(w, h) {
+  _drawDots(w, h) {
     for (let i = 0; i < 60; i++) {
       this.ctx.fillStyle = randomRGBA();
       this.ctx.beginPath();
@@ -72,7 +72,7 @@ export class Captcha {
     }
   }
 
-  #drawCharacters(w, h) {
+  _drawCharacters(w, h) {
     const spacing = w / (this.code.length + 1);
     for (let i = 0; i < this.code.length; i++) {
       const x = spacing * (i + 1) + randomInt(-8, 8);
@@ -97,7 +97,7 @@ export class Captcha {
     }
   }
 
-  #drawOverlay(w, h) {
+  _drawOverlay(w, h) {
     this.ctx.strokeStyle = 'rgba(255,255,255,0.03)';
     this.ctx.lineWidth = 1;
     for (let i = 0; i < 4; i++) {
