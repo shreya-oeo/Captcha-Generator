@@ -1,0 +1,14 @@
+{
+  "name": "captcha-generator",
+  "version": "1.0.0",
+  "description": "Lightweight browser-based CAPTCHA generator (also works server-side)",
+  "type": "module",
+  "main": "js/captcha.js",
+  "scripts": {
+    "start:node": "node server.js",
+    "start:bun": "bun server.js",
+    "start:deno": "deno run server.js"
+  },
+  "keywords": ["captcha", "canvas", "security", "verification"],
+  "license": "MIT"
+}
