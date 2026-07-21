@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CAPTCHA Generator</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>verify you're human</h1>
+    <p class="subtitle">or the closest thing to it</p>
+
+    <div class="captcha-wrapper">
+      <canvas id="captcha" height="90"></canvas>
+      <button class="refresh-btn" id="refresh" title="New CAPTCHA">↻</button>
+    </div>
+
+    <div class="input-group">
+      <input type="text" id="input" placeholder="Enter the text above" autocomplete="off" maxlength="8">
+      <button class="verify-btn" id="verify">Verify</button>
+    </div>
+
+    <div class="message" id="message"></div>
+    <p class="hint">click the CAPTCHA or ↻ to regenerate</p>
+  </div>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
